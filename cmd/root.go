@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// starter command
 var rootCmd = &cobra.Command{
 	Use:   "pti2tg",
 	Short: "pti2tg parse text from the image into .txt",
@@ -24,6 +25,7 @@ func Execute() {
 	}
 }
 
+// register all custom comamnds here
 func init() {
 	rootCmd.AddCommand(VersionCmd)
 }
