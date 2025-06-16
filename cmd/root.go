@@ -13,8 +13,13 @@ var rootCmd = &cobra.Command{
 	Short: "pti2tg parse text from the image into .txt",
 	Long:  "Parse Text from Image To plain text to avoid typing text from image manually",
 	Run: func(cmd *cobra.Command, args []string) {
+		// enable -v flag
+		showVersion, _ := cmd.Flags().GetBool("version")
+
+		if showVersion {
+			VersionHandler()
+		}
 		// Do Stuff Here
-		fmt.Println("Init")
 	},
 }
 
@@ -28,4 +33,6 @@ func Execute() {
 // register all custom comamnds here
 func init() {
 	rootCmd.AddCommand(VersionCmd)
+	// register -v flag
+	rootCmd.PersistentFlags().BoolP("version", "v", false, "Print the version of the pti2tg")
 }
