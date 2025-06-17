@@ -7,6 +7,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var imagePath = ""
+
 // starter command
 var rootCmd = &cobra.Command{
 	Use:   "pti2tg",
@@ -32,7 +34,9 @@ func Execute() {
 
 // register all custom comamnds here
 func init() {
-	rootCmd.AddCommand(VersionCmd)
+	rootCmd.AddCommand(ReadCmd, VersionCmd)
 	// register -v flag
 	rootCmd.PersistentFlags().BoolP("version", "v", false, "Print the version of the pti2tg")
+	ReadCmd.Flags().StringVarP(&imagePath, "path", "p", "", "path to the image file")
+	// ReadCmd.MarkFlagRequired("path")
 }
